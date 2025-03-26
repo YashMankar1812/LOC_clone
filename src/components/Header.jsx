@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaPhoneAlt, FaWhatsapp, FaBars } from "react-icons/fa";
 import locLogo from "/src/assets/loc.png"; // Update this path to your actual logo
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   return (
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-800 text-white shadow-lg border-2 border-white rounded-full px-4 py-4 w-[90%] sm:w-[80%] flex justify-between items-center z-50">
@@ -22,42 +22,28 @@ const Header = () => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6">
-        <li>
-          <button onClick={() => navigate("/")} className="hover:text-yellow-400 transition duration-300">
-            HOME
-          </button>
-        </li>
-        <li>
-          <button onClick={() => navigate("/about")} className="hover:text-yellow-400 transition duration-300">
-            ABOUT
-          </button>
-        </li>
-        <li>
-          <button onClick={() => navigate("/franchise")} className="hover:text-yellow-400 transition duration-300">
-            FRANCHISE
-          </button>
-        </li>
-        <li>
-          <button onClick={() => navigate("/locators")} className="hover:text-yellow-400 transition duration-300">
-            LOCATOR
-          </button>
-        </li>
-        <li>
-          <button onClick={() => navigate("/blog")} className="hover:text-yellow-400 transition duration-300">
-            BLOG
-          </button>
-        </li>
+        {[
+          { path: "/", label: "HOME" },
+          { path: "/about", label: "ABOUT" },
+          { path: "/franchise", label: "FRANCHISE" },
+          { path: "/locators", label: "LOCATOR" },
+          { path: "/blog", label: "BLOG" },
+        ].map((item, index) => (
+          <li key={index}>
+            <Link to={item.path} className="hover:text-yellow-400 transition duration-300">
+              {item.label}
+            </Link>
+          </li>
+        ))}
       </ul>
 
       {/* Icons Section */}
       <div className="flex items-center space-x-4">
-        {/* Phone Icon */}
         <div className="p-2 border-2 border-yellow-300 rounded-full">
           <a href="tel:9284777527" className="text-white hover:text-yellow-400 transition duration-300">
             <FaPhoneAlt className="text-lg" />
           </a>
         </div>
-        {/* WhatsApp Icon */}
         <div className="p-2 border-2 border-yellow-300 rounded-full">
           <a
             href="https://wa.me/9284777527"
@@ -83,31 +69,23 @@ const Header = () => {
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
         <ul className="absolute top-full left-0 bg-red-800 text-white w-full rounded-lg mt-2 py-2 flex flex-col items-center space-y-2 shadow-lg md:hidden">
-          <li>
-            <button onClick={() => { navigate("/"); setIsMenuOpen(false); }} className="hover:text-yellow-400">
-              HOME
-            </button>
-          </li>
-          <li>
-            <button onClick={() => { navigate("/about"); setIsMenuOpen(false); }} className="hover:text-yellow-400">
-              ABOUT US
-            </button>
-          </li>
-          <li>
-            <button onClick={() => { navigate("/franchise"); setIsMenuOpen(false); }} className="hover:text-yellow-400">
-              FRANCHISE
-            </button>
-          </li>
-          <li>
-            <button onClick={() => { navigate("/locators"); setIsMenuOpen(false); }} className="hover:text-yellow-400">
-              LOCATOR
-            </button>
-          </li>
-          <li>
-            <button onClick={() => { navigate("/blog"); setIsMenuOpen(false); }} className="hover:text-yellow-400">
-              BLOG
-            </button>
-          </li>
+          {[
+            { path: "/", label: "HOME" },
+            { path: "/about", label: "ABOUT US" },
+            { path: "/franchise", label: "FRANCHISE" },
+            { path: "/locators", label: "LOCATOR" },
+            { path: "/blog", label: "BLOG" },
+          ].map((item, index) => (
+            <li key={index}>
+              <Link
+                to={item.path}
+                onClick={() => setIsMenuOpen(false)}
+                className="hover:text-yellow-400"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       )}
     </nav>

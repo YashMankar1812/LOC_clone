@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const images = [
-  "/src/assets/slide3-img-min.jpeg",
+  "/public/assets/slide3-img-min.jpeg",
   "https://www.lifeofchai.in/Images/Featured%20Dish%20that%20people%20like/Elaichi%20Chai-min.jpg",
   "https://lifeofchai.in/Images/cartoon/LOC_-_Chai__Garam_B-removebg-preview.png",
 ];

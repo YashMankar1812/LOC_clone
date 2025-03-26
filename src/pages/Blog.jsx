@@ -62,7 +62,7 @@ const Blog = () => {
         data-aos="fade-left" // AOS Animation
       >
         <img
-          src="/src/assets/Group 659-min _3_.png"
+          src="/public/assets/Group 659-min _3_.png"
           alt="Right Image"
           className="object-cover w-full h-full"
         />

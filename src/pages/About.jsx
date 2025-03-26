@@ -27,7 +27,7 @@ const AboutUs = () => {
     {/* Right Side - Image with Overlay */}
     <div className="relative w-full md:w-1/2 h-1/2 md:h-full">
       <img
-        src="/src/assets/Group 659-min _3_.png"
+        src="/public/assets/Group 659-min _3_.png"
         
         alt="Right Image"
         data-aos="fade-left"
